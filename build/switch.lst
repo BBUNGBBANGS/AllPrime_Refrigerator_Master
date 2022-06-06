@@ -1,0 +1,93 @@
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc3Lh8Yj.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"switch.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.switch_read,"ax",%progbits
+  18              		.align	1
+  19              		.global	switch_read
+  20              		.syntax unified
+  21              		.code	16
+  22              		.thumb_func
+  24              	switch_read:
+  25              	.LFB40:
+  26              		.file 1 "Core/Src/switch.c"
+   1:Core/Src/switch.c **** #include "switch.h"
+   2:Core/Src/switch.c **** 
+   3:Core/Src/switch.c **** uint8 Switch_stOnOff;
+   4:Core/Src/switch.c **** 
+   5:Core/Src/switch.c **** void switch_read(void)
+   6:Core/Src/switch.c **** {
+  27              		.loc 1 6 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 10B5     		push	{r4, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 4, -8
+  35              		.cfi_offset 14, -4
+   7:Core/Src/switch.c ****     Switch_stOnOff = HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_15);
+  36              		.loc 1 7 5 view .LVU1
+  37              		.loc 1 7 22 is_stmt 0 view .LVU2
+  38 0002 8021     		movs	r1, #128
+  39 0004 9020     		movs	r0, #144
+  40 0006 0902     		lsls	r1, r1, #8
+  41 0008 C005     		lsls	r0, r0, #23
+  42 000a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+  43              	.LVL0:
+  44              		.loc 1 7 20 view .LVU3
+  45 000e 014B     		ldr	r3, .L2
+  46 0010 1870     		strb	r0, [r3]
+   8:Core/Src/switch.c **** }...
+  47              		.loc 1 8 1 view .LVU4
+  48              		@ sp needed
+  49 0012 10BD     		pop	{r4, pc}
+  50              	.L3:
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc3Lh8Yj.s 			page 2
+
+
+  51              		.align	2
+  52              	.L2:
+  53 0014 00000000 		.word	.LANCHOR0
+  54              		.cfi_endproc
+  55              	.LFE40:
+  57              		.global	Switch_stOnOff
+  58              		.section	.bss.Switch_stOnOff,"aw",%nobits
+  59              		.set	.LANCHOR0,. + 0
+  62              	Switch_stOnOff:
+  63 0000 00       		.space	1
+  64              		.text
+  65              	.Letext0:
+  66              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+  67              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+  68              		.file 4 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h"
+  69              		.file 5 "Core/Inc/vardef.h"
+  70              		.file 6 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\cc3Lh8Yj.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 switch.c
+C:\Users\jisu8\AppData\Local\Temp\cc3Lh8Yj.s:18     .text.switch_read:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\cc3Lh8Yj.s:24     .text.switch_read:00000000 switch_read
+C:\Users\jisu8\AppData\Local\Temp\cc3Lh8Yj.s:53     .text.switch_read:00000014 $d
+C:\Users\jisu8\AppData\Local\Temp\cc3Lh8Yj.s:62     .bss.Switch_stOnOff:00000000 Switch_stOnOff
+C:\Users\jisu8\AppData\Local\Temp\cc3Lh8Yj.s:63     .bss.Switch_stOnOff:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_ReadPin

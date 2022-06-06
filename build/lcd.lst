@@ -1,0 +1,331 @@
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccTKx5es.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.arch armv6s-m
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 0
+  12              		.eabi_attribute 18, 4
+  13              		.file	"lcd.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.LCD_Control,"ax",%progbits
+  18              		.align	1
+  19              		.global	LCD_Control
+  20              		.syntax unified
+  21              		.code	16
+  22              		.thumb_func
+  24              	LCD_Control:
+  25              	.LFB40:
+  26              		.file 1 "Core/Src/lcd.c"
+   1:Core/Src/lcd.c **** #include "lcd.h"
+   2:Core/Src/lcd.c **** uint16 tst_counter;
+   3:Core/Src/lcd.c **** 
+   4:Core/Src/lcd.c **** void LCD_Control(void)
+   5:Core/Src/lcd.c **** {
+  27              		.loc 1 5 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 0
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 24
+  34              		.cfi_offset 3, -24
+  35              		.cfi_offset 4, -20
+  36              		.cfi_offset 5, -16
+  37              		.cfi_offset 6, -12
+  38              		.cfi_offset 7, -8
+  39              		.cfi_offset 14, -4
+   6:Core/Src/lcd.c ****     tst_counter++;
+  40              		.loc 1 6 5 view .LVU1
+  41              		.loc 1 6 16 is_stmt 0 view .LVU2
+  42 0002 4D4A     		ldr	r2, .L5
+  43 0004 1388     		ldrh	r3, [r2]
+  44 0006 0133     		adds	r3, r3, #1
+  45 0008 9BB2     		uxth	r3, r3
+  46 000a 1380     		strh	r3, [r2]
+   7:Core/Src/lcd.c ****     if(tst_counter<=10)
+  47              		.loc 1 7 5 is_stmt 1 view .LVU3
+  48              		.loc 1 7 7 is_stmt 0 view .LVU4
+  49 000c 0A2B     		cmp	r3, #10
+  50 000e 4CD8     		bhi	.L2
+   8:Core/Src/lcd.c ****     {
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccTKx5es.s 			page 2
+
+
+   9:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOA,GPIO_PIN_15,GPIO_PIN_RESET);
+  51              		.loc 1 9 9 is_stmt 1 view .LVU5
+  52 0010 8027     		movs	r7, #128
+  53 0012 3F02     		lsls	r7, r7, #8
+  54 0014 9020     		movs	r0, #144
+  55 0016 0022     		movs	r2, #0
+  56 0018 3900     		movs	r1, r7
+  57 001a C005     		lsls	r0, r0, #23
+  58 001c FFF7FEFF 		bl	HAL_GPIO_WritePin
+  59              	.LVL0:
+  10:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOB,GPIO_PIN_10,GPIO_PIN_RESET);
+  60              		.loc 1 10 9 view .LVU6
+  61 0020 8026     		movs	r6, #128
+  62 0022 F600     		lsls	r6, r6, #3
+  63 0024 454C     		ldr	r4, .L5+4
+  64 0026 0022     		movs	r2, #0
+  65 0028 3100     		movs	r1, r6
+  66 002a 2000     		movs	r0, r4
+  67 002c FFF7FEFF 		bl	HAL_GPIO_WritePin
+  68              	.LVL1:
+  11:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOB,GPIO_PIN_11,GPIO_PIN_RESET);
+  69              		.loc 1 11 9 view .LVU7
+  70 0030 8025     		movs	r5, #128
+  71 0032 2D01     		lsls	r5, r5, #4
+  72 0034 0022     		movs	r2, #0
+  73 0036 2900     		movs	r1, r5
+  74 0038 2000     		movs	r0, r4
+  75 003a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  76              	.LVL2:
+  12:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOB,GPIO_PIN_14,GPIO_PIN_RESET);
+  77              		.loc 1 12 9 view .LVU8
+  78 003e 8021     		movs	r1, #128
+  79 0040 0022     		movs	r2, #0
+  80 0042 C901     		lsls	r1, r1, #7
+  81 0044 2000     		movs	r0, r4
+  82 0046 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  83              	.LVL3:
+  13:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOB,GPIO_PIN_15,GPIO_PIN_RESET);
+  84              		.loc 1 13 9 view .LVU9
+  85 004a 0022     		movs	r2, #0
+  86 004c 3900     		movs	r1, r7
+  87 004e 2000     		movs	r0, r4
+  88 0050 FFF7FEFF 		bl	HAL_GPIO_WritePin
+  89              	.LVL4:
+  14:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_8,GPIO_PIN_RESET);
+  90              		.loc 1 14 9 view .LVU10
+  91 0054 8021     		movs	r1, #128
+  92 0056 3A4C     		ldr	r4, .L5+8
+  93 0058 0022     		movs	r2, #0
+  94 005a 4900     		lsls	r1, r1, #1
+  95 005c 2000     		movs	r0, r4
+  96 005e FFF7FEFF 		bl	HAL_GPIO_WritePin
+  97              	.LVL5:
+  15:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_9,GPIO_PIN_RESET);
+  98              		.loc 1 15 9 view .LVU11
+  99 0062 8021     		movs	r1, #128
+ 100 0064 0022     		movs	r2, #0
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccTKx5es.s 			page 3
+
+
+ 101 0066 8900     		lsls	r1, r1, #2
+ 102 0068 2000     		movs	r0, r4
+ 103 006a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 104              	.LVL6:
+  16:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_10,GPIO_PIN_RESET);
+ 105              		.loc 1 16 9 view .LVU12
+ 106 006e 0022     		movs	r2, #0
+ 107 0070 3100     		movs	r1, r6
+ 108 0072 2000     		movs	r0, r4
+ 109 0074 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 110              	.LVL7:
+  17:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_11,GPIO_PIN_RESET);
+ 111              		.loc 1 17 9 view .LVU13
+ 112 0078 0022     		movs	r2, #0
+ 113 007a 2900     		movs	r1, r5
+ 114 007c 2000     		movs	r0, r4
+ 115 007e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 116              	.LVL8:
+  18:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_12,GPIO_PIN_RESET);
+ 117              		.loc 1 18 9 view .LVU14
+ 118 0082 8021     		movs	r1, #128
+ 119 0084 0022     		movs	r2, #0
+ 120 0086 4901     		lsls	r1, r1, #5
+ 121 0088 2000     		movs	r0, r4
+ 122 008a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 123              	.LVL9:
+  19:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_RESET);
+ 124              		.loc 1 19 9 view .LVU15
+ 125 008e 8021     		movs	r1, #128
+ 126 0090 0022     		movs	r2, #0
+ 127 0092 8901     		lsls	r1, r1, #6
+ 128 0094 2000     		movs	r0, r4
+ 129 0096 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 130              	.LVL10:
+ 131              	.L3:
+  20:Core/Src/lcd.c ****     }
+  21:Core/Src/lcd.c ****     else
+  22:Core/Src/lcd.c ****     {
+  23:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOA,GPIO_PIN_15,GPIO_PIN_SET);
+  24:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOB,GPIO_PIN_10,GPIO_PIN_SET);
+  25:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOB,GPIO_PIN_11,GPIO_PIN_SET);
+  26:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOB,GPIO_PIN_14,GPIO_PIN_SET);
+  27:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOB,GPIO_PIN_15,GPIO_PIN_SET);
+  28:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_8,GPIO_PIN_SET);
+  29:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_9,GPIO_PIN_SET);
+  30:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_10,GPIO_PIN_SET);
+  31:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_11,GPIO_PIN_SET);
+  32:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_12,GPIO_PIN_SET);
+  33:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_SET);
+  34:Core/Src/lcd.c ****     }
+  35:Core/Src/lcd.c **** 
+  36:Core/Src/lcd.c ****     if(tst_counter>20)
+ 132              		.loc 1 36 5 view .LVU16
+ 133              		.loc 1 36 19 is_stmt 0 view .LVU17
+ 134 009a 274B     		ldr	r3, .L5
+ 135 009c 1B88     		ldrh	r3, [r3]
+ 136              		.loc 1 36 7 view .LVU18
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccTKx5es.s 			page 4
+
+
+ 137 009e 142B     		cmp	r3, #20
+ 138 00a0 02D9     		bls	.L1
+  37:Core/Src/lcd.c ****     {
+  38:Core/Src/lcd.c ****         tst_counter = 0;
+ 139              		.loc 1 38 9 is_stmt 1 view .LVU19
+ 140              		.loc 1 38 21 is_stmt 0 view .LVU20
+ 141 00a2 254B     		ldr	r3, .L5
+ 142 00a4 0022     		movs	r2, #0
+ 143 00a6 1A80     		strh	r2, [r3]
+ 144              	.L1:
+  39:Core/Src/lcd.c ****     }
+  40:Core/Src/lcd.c **** }...
+ 145              		.loc 1 40 1 view .LVU21
+ 146              		@ sp needed
+ 147 00a8 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 148              	.L2:
+  23:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOA,GPIO_PIN_15,GPIO_PIN_SET);
+ 149              		.loc 1 23 9 is_stmt 1 view .LVU22
+ 150 00aa 8027     		movs	r7, #128
+ 151 00ac 3F02     		lsls	r7, r7, #8
+ 152 00ae 9020     		movs	r0, #144
+ 153 00b0 0122     		movs	r2, #1
+ 154 00b2 3900     		movs	r1, r7
+ 155 00b4 C005     		lsls	r0, r0, #23
+ 156 00b6 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 157              	.LVL11:
+  24:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOB,GPIO_PIN_10,GPIO_PIN_SET);
+ 158              		.loc 1 24 9 view .LVU23
+ 159 00ba 8026     		movs	r6, #128
+ 160 00bc F600     		lsls	r6, r6, #3
+ 161 00be 1F4C     		ldr	r4, .L5+4
+ 162 00c0 0122     		movs	r2, #1
+ 163 00c2 3100     		movs	r1, r6
+ 164 00c4 2000     		movs	r0, r4
+ 165 00c6 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 166              	.LVL12:
+  25:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOB,GPIO_PIN_11,GPIO_PIN_SET);
+ 167              		.loc 1 25 9 view .LVU24
+ 168 00ca 8025     		movs	r5, #128
+ 169 00cc 2D01     		lsls	r5, r5, #4
+ 170 00ce 0122     		movs	r2, #1
+ 171 00d0 2900     		movs	r1, r5
+ 172 00d2 2000     		movs	r0, r4
+ 173 00d4 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 174              	.LVL13:
+  26:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOB,GPIO_PIN_14,GPIO_PIN_SET);
+ 175              		.loc 1 26 9 view .LVU25
+ 176 00d8 8021     		movs	r1, #128
+ 177 00da 0122     		movs	r2, #1
+ 178 00dc C901     		lsls	r1, r1, #7
+ 179 00de 2000     		movs	r0, r4
+ 180 00e0 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 181              	.LVL14:
+  27:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOB,GPIO_PIN_15,GPIO_PIN_SET);
+ 182              		.loc 1 27 9 view .LVU26
+ 183 00e4 0122     		movs	r2, #1
+ 184 00e6 3900     		movs	r1, r7
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccTKx5es.s 			page 5
+
+
+ 185 00e8 2000     		movs	r0, r4
+ 186 00ea FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 187              	.LVL15:
+  28:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_8,GPIO_PIN_SET);
+ 188              		.loc 1 28 9 view .LVU27
+ 189 00ee 8021     		movs	r1, #128
+ 190 00f0 134C     		ldr	r4, .L5+8
+ 191 00f2 0122     		movs	r2, #1
+ 192 00f4 4900     		lsls	r1, r1, #1
+ 193 00f6 2000     		movs	r0, r4
+ 194 00f8 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 195              	.LVL16:
+  29:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_9,GPIO_PIN_SET);
+ 196              		.loc 1 29 9 view .LVU28
+ 197 00fc 8021     		movs	r1, #128
+ 198 00fe 0122     		movs	r2, #1
+ 199 0100 8900     		lsls	r1, r1, #2
+ 200 0102 2000     		movs	r0, r4
+ 201 0104 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 202              	.LVL17:
+  30:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_10,GPIO_PIN_SET);
+ 203              		.loc 1 30 9 view .LVU29
+ 204 0108 0122     		movs	r2, #1
+ 205 010a 3100     		movs	r1, r6
+ 206 010c 2000     		movs	r0, r4
+ 207 010e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 208              	.LVL18:
+  31:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_11,GPIO_PIN_SET);
+ 209              		.loc 1 31 9 view .LVU30
+ 210 0112 0122     		movs	r2, #1
+ 211 0114 2900     		movs	r1, r5
+ 212 0116 2000     		movs	r0, r4
+ 213 0118 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 214              	.LVL19:
+  32:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_12,GPIO_PIN_SET);
+ 215              		.loc 1 32 9 view .LVU31
+ 216 011c 8021     		movs	r1, #128
+ 217 011e 0122     		movs	r2, #1
+ 218 0120 4901     		lsls	r1, r1, #5
+ 219 0122 2000     		movs	r0, r4
+ 220 0124 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 221              	.LVL20:
+  33:Core/Src/lcd.c ****         HAL_GPIO_WritePin(GPIOC,GPIO_PIN_13,GPIO_PIN_SET);
+ 222              		.loc 1 33 9 view .LVU32
+ 223 0128 8021     		movs	r1, #128
+ 224 012a 0122     		movs	r2, #1
+ 225 012c 8901     		lsls	r1, r1, #6
+ 226 012e 2000     		movs	r0, r4
+ 227 0130 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 228              	.LVL21:
+ 229 0134 B1E7     		b	.L3
+ 230              	.L6:
+ 231 0136 C046     		.align	2
+ 232              	.L5:
+ 233 0138 00000000 		.word	.LANCHOR0
+ 234 013c 00040048 		.word	1207960576
+ 235 0140 00080048 		.word	1207961600
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccTKx5es.s 			page 6
+
+
+ 236              		.cfi_endproc
+ 237              	.LFE40:
+ 239              		.global	tst_counter
+ 240              		.section	.bss.tst_counter,"aw",%nobits
+ 241              		.align	1
+ 242              		.set	.LANCHOR0,. + 0
+ 245              	tst_counter:
+ 246 0000 0000     		.space	2
+ 247              		.text
+ 248              	.Letext0:
+ 249              		.file 2 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 250              		.file 3 "d:\\3.tools\\arm_gcc_toolchain\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 251              		.file 4 "Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h"
+ 252              		.file 5 "Core/Inc/vardef.h"
+ 253              		.file 6 "Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h"
+ARM GAS  C:\Users\jisu8\AppData\Local\Temp\ccTKx5es.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 lcd.c
+C:\Users\jisu8\AppData\Local\Temp\ccTKx5es.s:18     .text.LCD_Control:00000000 $t
+C:\Users\jisu8\AppData\Local\Temp\ccTKx5es.s:24     .text.LCD_Control:00000000 LCD_Control
+C:\Users\jisu8\AppData\Local\Temp\ccTKx5es.s:233    .text.LCD_Control:00000138 $d
+C:\Users\jisu8\AppData\Local\Temp\ccTKx5es.s:245    .bss.tst_counter:00000000 tst_counter
+C:\Users\jisu8\AppData\Local\Temp\ccTKx5es.s:241    .bss.tst_counter:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_WritePin
