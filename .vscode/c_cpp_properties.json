@@ -20,7 +20,7 @@
       "cStandard": "c17",
       "cppStandard": "c++17",
       "intelliSenseMode": "gcc-arm",
-      "compilerPath": "D:\\3.TOOLS\\ARM_GCC_TOOLCHAIN\\BIN\\ARM-NONE-EABI-GCC.EXE",
+      "compilerPath": "/Users/seojisu/Library/Arm-GCC-xPack/bin/arm-none-eabi-gcc",
       "compilerArgs": [
         "-mcpu=cortex-m0",
         "-mthumb"
