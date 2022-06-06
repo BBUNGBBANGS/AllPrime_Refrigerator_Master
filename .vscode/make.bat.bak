@@ -1,3 +1,0 @@
-@echo on
-make -j48
-exit
