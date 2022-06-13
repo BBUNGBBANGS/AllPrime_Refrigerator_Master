@@ -82,7 +82,7 @@ __weak void UsageFault_Handler(void)                    {Default_Handler();}
 __weak void SVC_Handler(void)                           {Default_Handler();}
 __weak void DebugMon_Handler(void)                      {Default_Handler();}
 __weak void PendSV_Handler(void)                        {Default_Handler();}
-__weak void SysTick_Handler(void)                       {Default_Handler();}
+__weak void SysTick_Handler(void)                       {SystemTick_Handler();}
 __weak void WWDG_IRQHandler(void)                       {Default_Handler();}
 __weak void PVD_IRQHandler(void)                        {Default_Handler();}
 __weak void TAMPER_IRQHandler(void)                     {Default_Handler();}
