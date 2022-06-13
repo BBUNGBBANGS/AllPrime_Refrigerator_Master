@@ -27,12 +27,11 @@ extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f0xx_hal.h"
+#include "stm32f1xx_hal.h"
 #include "os.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-extern TIM_HandleTypeDef htim14;
-extern TIM_HandleTypeDef htim16;
+
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -42,7 +41,12 @@ extern TIM_HandleTypeDef htim16;
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
+extern SPI_HandleTypeDef hspi1;
 
+extern TIM_HandleTypeDef htim2;
+extern TIM_HandleTypeDef htim4;
+
+extern UART_HandleTypeDef huart1;
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/

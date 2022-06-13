@@ -23,7 +23,7 @@ static void Os_1ms_Task(void)
 static void Os_10ms_Task(void)
 {
 	Key_Scan();
-	LCD_Control();
+//	LCD_Control();
 }
 
 static void Os_100ms_Task(void)
