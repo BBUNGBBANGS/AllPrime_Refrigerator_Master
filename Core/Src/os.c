@@ -13,7 +13,7 @@ static void Os_Background_Task(void);
 
 void Os_Init_Task(void)
 {
-
+	LCD_Init();
 }
 static void Os_1ms_Task(void)
 {
@@ -23,12 +23,11 @@ static void Os_1ms_Task(void)
 static void Os_10ms_Task(void)
 {
 	Key_Scan();
-//	LCD_Control();
 }
 
 static void Os_100ms_Task(void)
 {
-
+	LCD_Control();
 }
 
 static void Os_Background_Task(void)
