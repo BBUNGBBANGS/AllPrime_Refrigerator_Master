@@ -8,6 +8,15 @@ static void LCD_Transmit_Command(char cmd);
 static void LCD_Cursor(char col, char row);
 static void LCD_Transmit_Data(char data);
 static void LCD_Data_Output(uint8 data);
+/* 5x7 Font including 1 space to display HELLO WORLD */
+char H[]={0x7F, 0x08, 0x08, 0x08, 0x7F, 0x00};
+char E[]={0x7F, 0x49, 0x49, 0x49, 0x41, 0x00};
+char L[]={0x7F, 0x40, 0x40, 0x40, 0x40, 0x00};
+char O[]={0x3E, 0x41, 0x41, 0x41, 0x3E, 0x00};
+
+char W[]={0x3F, 0x40, 0x38, 0x40, 0x3F, 0x00};
+char R[]={0x7F, 0x09, 0x19, 0x29, 0x46, 0x00};
+char D[]={0x7F, 0x41, 0x41, 0x22, 0x1C, 0x00};
 
 void LCD_Init(void)
 {
@@ -24,26 +33,72 @@ void LCD_Init(void)
 	//LCD_Transmit_Command(0x01); // Display Clear
     //HAL_Delay(10);
 }
-uint8 test_data = 0x0; 
-uint8 test_x;
+uint8 test_data = 0xff; 
+uint8 test_x = 0;
 uint8 test_y;
+uint8 test_word;
 void LCD_Control(void)
 {
-    test_data++;
-    test_x++;
-    test_y++;
-    if(test_x>7)
-    {
-        test_x = 0;
-    }
-    if(test_y>63)
+    //test_data++;
+    //test_x++;
+    //test_y++;
+    if(test_y>7)
     {
         test_y = 0;
     }
-    LCD_Transmit_Command(0xB8|test_x);
-    LCD_Transmit_Data(test_data);
-    //LCD_Transmit_Command(0x40|test_y);
-    //LCD_Transmit_Data(test_data);
+    if(test_x>63)
+    {
+        test_x = 0;
+    }
+    LCD_Transmit_Command(0xB8|test_y);
+    LCD_Transmit_Command(0x40|(test_word*5));
+    for(uint8 i = 0u;i<6;i++)
+    {
+        switch(test_word)
+        {
+            case 0 :
+                LCD_Transmit_Data(H[i]);
+            break;
+            case 1 :
+                LCD_Transmit_Data(E[i]);
+            break;
+            case 2 :
+                LCD_Transmit_Data(L[i]);
+            break;
+            case 3 :
+                LCD_Transmit_Data(L[i]);
+            break;
+            case 4 :
+                LCD_Transmit_Data(O[i]);
+            break;
+            case 5 :
+                LCD_Transmit_Data(0);
+            break;
+            case 6 :
+                LCD_Transmit_Data(W[i]);
+            break;
+            case 7 :
+                LCD_Transmit_Data(O[i]);
+            break;
+            case 8 :
+                LCD_Transmit_Data(R[i]);
+            break;
+            case 9 :
+                LCD_Transmit_Data(L[i]);
+            break;
+            case 10 :
+                LCD_Transmit_Data(D[i]);
+            break;
+            case 11 :
+                LCD_Transmit_Data(0);
+            break;
+        }
+    }
+    test_word++;
+    if(test_word>11)
+    {
+        test_word = 0;
+    }
 }
 
 static void LCD_Transmit_Command(char cmd)
